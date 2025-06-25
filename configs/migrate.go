@@ -12,7 +12,7 @@ func Migrate(db *gorm.DB) {
 		return
 	}
 	err := db.AutoMigrate(
-		&models.Teste{},
+		&models.TesteTable{},
 	)
 	if err != nil {
 		log.Fatalf("erro no migrar banco: %v", err.Error())
