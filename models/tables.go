@@ -1,17 +1,13 @@
-package teste
+package models
 
 import (
-	"github.com/ArthurRamosdevconnection/api-bubble-harmonika/crud"
+	"gorm.io/gorm"
 	"time"
 )
 
 type Teste struct {
+	gorm.Model
 	Description string    `json:"description"`
 	Value       string    `json:"value"`
 	Date        time.Time `json:"date"`
-}
-
-type TesteModel struct {
-	crud.BaseModel
-	Teste
 }
