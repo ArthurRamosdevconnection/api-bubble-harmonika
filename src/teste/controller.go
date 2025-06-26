@@ -16,4 +16,9 @@ func RegisterRoutes(app *fiber.App, db *gorm.DB) {
 	routes.Get("/", r.GetTeste)
 	routes.Get("/", r.GetTesteById)
 	routes.Post("/", r.CreateTeste)
+	routes.Get("/hello", HelloWorld)
+}
+
+func HelloWorld(c *fiber.Ctx) error {
+	return c.SendString("Hello, World!")
 }

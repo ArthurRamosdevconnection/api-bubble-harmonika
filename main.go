@@ -12,6 +12,8 @@ import (
 	"log"
 )
 
+// Trocar usario, tirar container do postgres, trocar o banco de dados, coolify
+
 func main() {
 	dsn := configs.ConnectDB()
 
