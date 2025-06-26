@@ -1,7 +1,7 @@
 package configs
 
 import (
-	"github.com/ArthurRamosdevconnection/api-bubble-harmonika/models"
+	"github.com/ArthurRamosdevconnection/api-bubble-harmonika/src/models"
 	"gorm.io/gorm"
 	"log"
 )

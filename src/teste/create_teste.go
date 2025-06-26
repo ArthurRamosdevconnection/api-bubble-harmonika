@@ -1,7 +1,7 @@
 package teste
 
 import (
-	"github.com/ArthurRamosdevconnection/api-bubble-harmonika/models"
+	"github.com/ArthurRamosdevconnection/api-bubble-harmonika/src/models"
 	"github.com/gofiber/fiber/v2"
 )
 

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/ArthurRamosdevconnection/api-bubble-harmonika/configs"
-	"github.com/ArthurRamosdevconnection/api-bubble-harmonika/teste"
+	"github.com/ArthurRamosdevconnection/api-bubble-harmonika/src/configs"
+	"github.com/ArthurRamosdevconnection/api-bubble-harmonika/src/teste"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/compress"
 	"github.com/gofiber/fiber/v2/middleware/cors"
