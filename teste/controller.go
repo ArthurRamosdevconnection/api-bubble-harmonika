@@ -6,20 +6,18 @@ import (
 	"gorm.io/gorm"
 )
 
-type InterfaceTeste interface {
-	crud.InterfaceCrud[TesteModel]
-	//Outras funções estariam declaradas aqui
-}
-
-type Repo struct {
-	InterfaceTeste
-	db *gorm.DB
+type testeCustomRepo struct {
+	*crud.GormHandler[TesteModel]
 }
 
 func RegisterRoutes(app *fiber.App, db *gorm.DB) {
-	tRepo := &Repo{
-		db: db,
+	r := testeCustomRepo{
+		crud.NewGormRepository[TesteModel](db),
 	}
-	routes := app.Group("/api/v1/teste")
-	routes.Get("/", tRepo.FindByValue)
+	routes := app.Group("/teste")
+	routes.Get("/", r.HelloWorld)
+}
+
+func (t testeCustomRepo) HelloWorld(c *fiber.Ctx) error {
+	return c.SendString("Hello World")
 }

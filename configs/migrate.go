@@ -1,7 +1,7 @@
 package configs
 
 import (
-	"github.com/ArthurRamosdevconnection/api-bubble-harmonika/models"
+	"github.com/ArthurRamosdevconnection/api-bubble-harmonika/teste"
 	"gorm.io/gorm"
 	"log"
 )
@@ -12,7 +12,7 @@ func Migrate(db *gorm.DB) {
 		return
 	}
 	err := db.AutoMigrate(
-		&models.TesteTable{},
+		&teste.TesteModel{},
 	)
 	if err != nil {
 		log.Fatalf("erro no migrar banco: %v", err.Error())
