@@ -7,7 +7,7 @@ import (
 )
 
 func (r *GormHandler[T]) RouteCreate(c *fiber.Ctx) error {
-	var toCreate T
+	var toCreate []T
 	err := c.BodyParser(&toCreate)
 	if err != nil {
 		return c.Status(500).JSON(fiber.Map{
@@ -47,6 +47,17 @@ func (r *GormHandler[T]) RouteUpdate(c *fiber.Ctx) error {
 		"message": "Registro criado com sucesso",
 		"data":    updated,
 	})
+}
+
+func (r *GormHandler[T]) RouteGetAll(c *fiber.Ctx) error {
+	result, err := r.GetAll()
+	if err != nil {
+		return c.Status(500).JSON(fiber.Map{
+			"message": "Erro ao buscar registros",
+			"error":   err.Error(),
+		})
+	}
+	return c.Status(200).JSON(result)
 }
 
 func (r *GormHandler[T]) RouteFilters(c *fiber.Ctx) error {

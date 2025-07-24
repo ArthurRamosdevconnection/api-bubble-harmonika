@@ -10,7 +10,7 @@ type testeCustomRepo struct {
 	*crud.GormHandler[TesteModel]
 }
 
-func RegisterRoutes(app *fiber.App, db *gorm.DB) {
+func RegisterCustomRoutes(app *fiber.App, db *gorm.DB) {
 	r := testeCustomRepo{
 		crud.NewGormRepository[TesteModel](db),
 	}
