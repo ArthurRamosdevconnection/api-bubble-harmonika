@@ -4,14 +4,14 @@ import (
 	"fmt"
 )
 
-func (r *GormHandler[T]) Create(toCreate T) (created T, err error) {
+func (r *GormHandler[T]) Create(toCreate []T) (created []T, err error) {
 	err = r.db.Create(&toCreate).Error
 	if err != nil {
 		fmt.Println(err.Error())
 		return
 	}
 	fmt.Println(toCreate)
-	fmt.Println(toCreate.GetId())
+	fmt.Println(toCreate[0].GetId())
 	return toCreate, nil
 }
 
