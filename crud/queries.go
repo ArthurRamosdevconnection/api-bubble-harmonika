@@ -3,27 +3,23 @@ package crud
 import "strconv"
 
 func (r *GormHandler[T]) Where(column string, value any) *GormHandler[T] {
-	returnHandler := r
-	returnHandler.db = returnHandler.db.Where(column, value)
-	return returnHandler
+	r.db = r.db.Where(column, value)
+	return r
 }
 
 func (r *GormHandler[T]) Limit(value int) *GormHandler[T] {
-	returnHandler := r
-	returnHandler.db = returnHandler.db.Limit(value)
-	return returnHandler
+	r.db = r.db.Limit(value)
+	return r
 }
 
 func (r *GormHandler[T]) Offset(value int) *GormHandler[T] {
-	returnHandler := r
-	returnHandler.db = returnHandler.db.Offset(value)
-	return returnHandler
+	r.db = r.db.Offset(value)
+	return r
 }
 
 func (r *GormHandler[T]) OrderBy(column string, order string) *GormHandler[T] {
-	returnHandler := r
-	returnHandler.db = returnHandler.db.Order(column + " " + order)
-	return returnHandler
+	r.db = r.db.Order(column + " " + order)
+	return r
 }
 
 func (r *GormHandler[T]) WhereId(id any) *GormHandler[T] {
@@ -37,7 +33,6 @@ func (r *GormHandler[T]) WhereId(id any) *GormHandler[T] {
 	default:
 		panic("tipo de ID não suportado")
 	}
-	returnHandler := r
-	returnHandler.db = returnHandler.db.Where("id", id)
-	return returnHandler
+	r.db.Where("id", id)
+	return r
 }

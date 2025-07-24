@@ -61,22 +61,24 @@ func (r *GormHandler[T]) RouteGetAll(c *fiber.Ctx) error {
 }
 
 func (r *GormHandler[T]) RouteFilters(c *fiber.Ctx) error {
-	rp := r
+	query := r
 	for _, key := range GetJSONFieldNames[T]() {
 		fmt.Println(key)
 		value := c.Query(key)
 		if value == "" {
 			continue
 		}
-		rp = rp.Where(key, value)
+		query.Where(key, value)
 	}
-	result, err := rp.GetAll()
+	result, err := query.GetAll()
 	if err != nil {
 		return c.Status(500).JSON(fiber.Map{
 			"message": "Erro ao buscar registros",
 			"error":   err.Error(),
 		})
 	}
+	id1, err := r.Where("id", 1).GetAll()
+	fmt.Println(id1)
 	return c.Status(200).JSON(result)
 
 }
